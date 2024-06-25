@@ -1,5 +1,6 @@
 # Local .terraform directories
 **/.terraform/*
+.terraform/*
 
 # .tfstate files
 *.tfstate
@@ -10,7 +11,8 @@ crash.log
 crash.*.log
 
 # Ignore transient lock info files created by terraform apply
-.terraform.lock.hcl
+#*.terraform.lock.hcl
+.terraform.tfstate.lock.info
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
