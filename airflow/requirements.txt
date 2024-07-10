@@ -1,0 +1,6 @@
+pandas
+geopandas
+google-cloud-storage
+apache-airflow
+wget
+pyspark

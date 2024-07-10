@@ -1,0 +1,17 @@
+[2024-07-09T21:10:00.619+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-09T21:10:00.646+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: test_transformation.upload_script_task manual__2024-07-09T21:09:56.920173+00:00 [queued]>
+[2024-07-09T21:10:00.658+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: test_transformation.upload_script_task manual__2024-07-09T21:09:56.920173+00:00 [queued]>
+[2024-07-09T21:10:00.658+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2024-07-09T21:10:00.680+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): upload_script_task> on 2024-07-09 21:09:56.920173+00:00
+[2024-07-09T21:10:00.691+0000] {standard_task_runner.py:63} INFO - Started process 530 to run task
+[2024-07-09T21:10:00.698+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'test_transformation', 'upload_script_task', 'manual__2024-07-09T21:09:56.920173+00:00', '--job-id', '91', '--raw', '--subdir', 'DAGS_FOLDER/transformation_dag.py', '--cfg-path', '/tmp/tmpiap23h18']
+[2024-07-09T21:10:00.704+0000] {standard_task_runner.py:91} INFO - Job 91: Subtask upload_script_task
+[2024-07-09T21:10:00.780+0000] {task_command.py:426} INFO - Running <TaskInstance: test_transformation.upload_script_task manual__2024-07-09T21:09:56.920173+00:00 [running]> on host ea9610d9d6e7
+[2024-07-09T21:10:00.912+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='test_transformation' AIRFLOW_CTX_TASK_ID='upload_script_task' AIRFLOW_CTX_EXECUTION_DATE='2024-07-09T21:09:56.920173+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-07-09T21:09:56.920173+00:00'
+[2024-07-09T21:10:00.916+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-09T21:10:01.284+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-07-09T21:10:01.284+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-09T21:10:01.305+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=test_transformation, task_id=upload_script_task, run_id=manual__2024-07-09T21:09:56.920173+00:00, execution_date=20240709T210956, start_date=20240709T211000, end_date=20240709T211001
+[2024-07-09T21:10:01.353+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2024-07-09T21:10:01.398+0000] {taskinstance.py:3503} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-07-09T21:10:01.401+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
