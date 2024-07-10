@@ -1,0 +1,150 @@
+[2024-07-09T23:57:10.633+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-07-09T23:57:10.669+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: test_transformation.pyspark_task manual__2024-07-09T23:56:58.520294+00:00 [queued]>
+[2024-07-09T23:57:10.686+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: test_transformation.pyspark_task manual__2024-07-09T23:56:58.520294+00:00 [queued]>
+[2024-07-09T23:57:10.687+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-07-09T23:57:10.717+0000] {taskinstance.py:2330} INFO - Executing <Task(DataprocSubmitJobOperator): pyspark_task> on 2024-07-09 23:56:58.520294+00:00
+[2024-07-09T23:57:10.731+0000] {standard_task_runner.py:63} INFO - Started process 3263 to run task
+[2024-07-09T23:57:10.737+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'test_transformation', 'pyspark_task', 'manual__2024-07-09T23:56:58.520294+00:00', '--job-id', '137', '--raw', '--subdir', 'DAGS_FOLDER/transformation_dag.py', '--cfg-path', '/tmp/tmp2xzgb4hd']
+[2024-07-09T23:57:10.744+0000] {standard_task_runner.py:91} INFO - Job 137: Subtask pyspark_task
+[2024-07-09T23:57:10.843+0000] {task_command.py:426} INFO - Running <TaskInstance: test_transformation.pyspark_task manual__2024-07-09T23:56:58.520294+00:00 [running]> on host ea9610d9d6e7
+[2024-07-09T23:57:11.022+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='test_transformation' AIRFLOW_CTX_TASK_ID='pyspark_task' AIRFLOW_CTX_EXECUTION_DATE='2024-07-09T23:56:58.520294+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-07-09T23:56:58.520294+00:00'
+[2024-07-09T23:57:11.027+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-07-09T23:57:11.027+0000] {dataproc.py:2553} INFO - Submitting job
+[2024-07-09T23:57:11.029+0000] {crypto.py:82} WARNING - empty cryptography key - values will not be stored encrypted.
+[2024-07-09T23:57:11.030+0000] {connection.py:274} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2024-07-09T23:57:11.032+0000] {base.py:84} INFO - Using connection ID 'google_cloud_default' for task execution.
+[2024-07-09T23:57:11.251+0000] {dataproc.py:2565} INFO - Job f130bce1-5877-477e-8264-db432af472af submitted successfully.
+[2024-07-09T23:57:11.277+0000] {dataproc.py:2600} INFO - Waiting for job f130bce1-5877-477e-8264-db432af472af to complete
+[2024-07-09T23:57:41.433+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-07-09T23:57:41.446+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/providers/google/cloud/operators/dataproc.py", line 2601, in execute
+    self.hook.wait_for_job(
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/providers/google/common/hooks/base_google.py", line 528, in inner_wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/providers/google/cloud/hooks/dataproc.py", line 829, in wait_for_job
+    raise AirflowException(f"Job failed:\n{job}")
+airflow.exceptions.AirflowException: Job failed:
+reference {
+  project_id: "famous-muse-426921-s5"
+  job_id: "f130bce1-5877-477e-8264-db432af472af"
+}
+placement {
+  cluster_name: "example-cluster"
+  cluster_uuid: "b120ed89-8d98-49e3-8a65-c7d8e1bb68be"
+}
+pyspark_job {
+  main_python_file_uri: "gs://de-zoomcamp-cchow-bucket/transformation.py"
+  args: "--project_id=famous-muse-426921-s5"
+  args: "--bucket=de-zoomcamp-cchow-bucket"
+  jar_file_uris: "gs://de-zoomcamp-cchow-bucket/spark-bigquery-latest_2.12.jar"
+}
+status {
+  state: ERROR
+  details: "Google Cloud Dataproc Agent reports job failure. If logs are available, they can be found at:\nhttps://console.cloud.google.com/dataproc/jobs/f130bce1-5877-477e-8264-db432af472af?project=famous-muse-426921-s5&region=us-west1\ngcloud dataproc jobs wait \'f130bce1-5877-477e-8264-db432af472af\' --region \'us-west1\' --project \'famous-muse-426921-s5\'\nhttps://console.cloud.google.com/storage/browser/dataproc-staging-us-west1-735867942533-qmookup3/google-cloud-dataproc-metainfo/b120ed89-8d98-49e3-8a65-c7d8e1bb68be/jobs/f130bce1-5877-477e-8264-db432af472af/\ngs://dataproc-staging-us-west1-735867942533-qmookup3/google-cloud-dataproc-metainfo/b120ed89-8d98-49e3-8a65-c7d8e1bb68be/jobs/f130bce1-5877-477e-8264-db432af472af/driveroutput.*"
+  state_start_time {
+    seconds: 1720569459
+    nanos: 823649000
+  }
+}
+status_history {
+  state: PENDING
+  state_start_time {
+    seconds: 1720569431
+    nanos: 240187000
+  }
+}
+status_history {
+  state: SETUP_DONE
+  state_start_time {
+    seconds: 1720569431
+    nanos: 278815000
+  }
+}
+status_history {
+  state: RUNNING
+  state_start_time {
+    seconds: 1720569431
+    nanos: 508628000
+  }
+}
+yarn_applications {
+  name: "test"
+  state: FINISHED
+  progress: 1
+  tracking_url: "http://example-cluster-m:8088/proxy/application_1720567886766_0004/"
+}
+driver_output_resource_uri: "gs://dataproc-staging-us-west1-735867942533-qmookup3/google-cloud-dataproc-metainfo/b120ed89-8d98-49e3-8a65-c7d8e1bb68be/jobs/f130bce1-5877-477e-8264-db432af472af/driveroutput"
+driver_control_files_uri: "gs://dataproc-staging-us-west1-735867942533-qmookup3/google-cloud-dataproc-metainfo/b120ed89-8d98-49e3-8a65-c7d8e1bb68be/jobs/f130bce1-5877-477e-8264-db432af472af/"
+job_uuid: "f130bce1-5877-477e-8264-db432af472af"
+done: true
+
+[2024-07-09T23:57:41.455+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=test_transformation, task_id=pyspark_task, run_id=manual__2024-07-09T23:56:58.520294+00:00, execution_date=20240709T235658, start_date=20240709T235710, end_date=20240709T235741
+[2024-07-09T23:57:41.474+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 137 for task pyspark_task (Job failed:
+reference {
+  project_id: "famous-muse-426921-s5"
+  job_id: "f130bce1-5877-477e-8264-db432af472af"
+}
+placement {
+  cluster_name: "example-cluster"
+  cluster_uuid: "b120ed89-8d98-49e3-8a65-c7d8e1bb68be"
+}
+pyspark_job {
+  main_python_file_uri: "gs://de-zoomcamp-cchow-bucket/transformation.py"
+  args: "--project_id=famous-muse-426921-s5"
+  args: "--bucket=de-zoomcamp-cchow-bucket"
+  jar_file_uris: "gs://de-zoomcamp-cchow-bucket/spark-bigquery-latest_2.12.jar"
+}
+status {
+  state: ERROR
+  details: "Google Cloud Dataproc Agent reports job failure. If logs are available, they can be found at:\nhttps://console.cloud.google.com/dataproc/jobs/f130bce1-5877-477e-8264-db432af472af?project=famous-muse-426921-s5&region=us-west1\ngcloud dataproc jobs wait \'f130bce1-5877-477e-8264-db432af472af\' --region \'us-west1\' --project \'famous-muse-426921-s5\'\nhttps://console.cloud.google.com/storage/browser/dataproc-staging-us-west1-735867942533-qmookup3/google-cloud-dataproc-metainfo/b120ed89-8d98-49e3-8a65-c7d8e1bb68be/jobs/f130bce1-5877-477e-8264-db432af472af/\ngs://dataproc-staging-us-west1-735867942533-qmookup3/google-cloud-dataproc-metainfo/b120ed89-8d98-49e3-8a65-c7d8e1bb68be/jobs/f130bce1-5877-477e-8264-db432af472af/driveroutput.*"
+  state_start_time {
+    seconds: 1720569459
+    nanos: 823649000
+  }
+}
+status_history {
+  state: PENDING
+  state_start_time {
+    seconds: 1720569431
+    nanos: 240187000
+  }
+}
+status_history {
+  state: SETUP_DONE
+  state_start_time {
+    seconds: 1720569431
+    nanos: 278815000
+  }
+}
+status_history {
+  state: RUNNING
+  state_start_time {
+    seconds: 1720569431
+    nanos: 508628000
+  }
+}
+yarn_applications {
+  name: "test"
+  state: FINISHED
+  progress: 1
+  tracking_url: "http://example-cluster-m:8088/proxy/application_1720567886766_0004/"
+}
+driver_output_resource_uri: "gs://dataproc-staging-us-west1-735867942533-qmookup3/google-cloud-dataproc-metainfo/b120ed89-8d98-49e3-8a65-c7d8e1bb68be/jobs/f130bce1-5877-477e-8264-db432af472af/driveroutput"
+driver_control_files_uri: "gs://dataproc-staging-us-west1-735867942533-qmookup3/google-cloud-dataproc-metainfo/b120ed89-8d98-49e3-8a65-c7d8e1bb68be/jobs/f130bce1-5877-477e-8264-db432af472af/"
+job_uuid: "f130bce1-5877-477e-8264-db432af472af"
+done: true
+; 3263)
+[2024-07-09T23:57:41.490+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-07-09T23:57:41.513+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-07-09T23:57:41.515+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

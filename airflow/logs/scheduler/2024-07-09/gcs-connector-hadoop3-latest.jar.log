@@ -1,0 +1,45 @@
+[2024-07-09T21:29:33.592+0000] {processor.py:161} INFO - Started process (PID=5059) to work on /opt/airflow/dags/gcs-connector-hadoop3-latest.jar
+[2024-07-09T21:29:33.593+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gcs-connector-hadoop3-latest.jar for tasks to queue
+[2024-07-09T21:29:33.595+0000] {logging_mixin.py:188} INFO - [2024-07-09T21:29:33.594+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/gcs-connector-hadoop3-latest.jar
+[2024-07-09T21:29:34.311+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/gcs-connector-hadoop3-latest.jar
+[2024-07-09T21:29:34.330+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gcs-connector-hadoop3-latest.jar took 0.750 seconds
+[2024-07-09T21:30:07.436+0000] {processor.py:161} INFO - Started process (PID=5131) to work on /opt/airflow/dags/gcs-connector-hadoop3-latest.jar
+[2024-07-09T21:30:07.437+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gcs-connector-hadoop3-latest.jar for tasks to queue
+[2024-07-09T21:30:07.439+0000] {logging_mixin.py:188} INFO - [2024-07-09T21:30:07.438+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/gcs-connector-hadoop3-latest.jar
+[2024-07-09T21:30:07.785+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/gcs-connector-hadoop3-latest.jar
+[2024-07-09T21:30:07.805+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gcs-connector-hadoop3-latest.jar took 0.382 seconds
+[2024-07-09T21:30:40.915+0000] {processor.py:161} INFO - Started process (PID=5193) to work on /opt/airflow/dags/gcs-connector-hadoop3-latest.jar
+[2024-07-09T21:30:40.918+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gcs-connector-hadoop3-latest.jar for tasks to queue
+[2024-07-09T21:30:40.920+0000] {logging_mixin.py:188} INFO - [2024-07-09T21:30:40.920+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/gcs-connector-hadoop3-latest.jar
+[2024-07-09T21:30:41.382+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/gcs-connector-hadoop3-latest.jar
+[2024-07-09T21:30:41.413+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gcs-connector-hadoop3-latest.jar took 0.515 seconds
+[2024-07-09T21:31:14.707+0000] {processor.py:161} INFO - Started process (PID=5255) to work on /opt/airflow/dags/gcs-connector-hadoop3-latest.jar
+[2024-07-09T21:31:14.709+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gcs-connector-hadoop3-latest.jar for tasks to queue
+[2024-07-09T21:31:14.710+0000] {logging_mixin.py:188} INFO - [2024-07-09T21:31:14.710+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/gcs-connector-hadoop3-latest.jar
+[2024-07-09T21:31:15.079+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/gcs-connector-hadoop3-latest.jar
+[2024-07-09T21:31:15.102+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gcs-connector-hadoop3-latest.jar took 0.407 seconds
+[2024-07-09T21:31:47.660+0000] {processor.py:161} INFO - Started process (PID=5318) to work on /opt/airflow/dags/gcs-connector-hadoop3-latest.jar
+[2024-07-09T21:31:47.662+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gcs-connector-hadoop3-latest.jar for tasks to queue
+[2024-07-09T21:31:47.663+0000] {logging_mixin.py:188} INFO - [2024-07-09T21:31:47.663+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/gcs-connector-hadoop3-latest.jar
+[2024-07-09T21:31:48.019+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/gcs-connector-hadoop3-latest.jar
+[2024-07-09T21:31:48.040+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gcs-connector-hadoop3-latest.jar took 0.392 seconds
+[2024-07-09T21:32:20.539+0000] {processor.py:161} INFO - Started process (PID=5379) to work on /opt/airflow/dags/gcs-connector-hadoop3-latest.jar
+[2024-07-09T21:32:20.541+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gcs-connector-hadoop3-latest.jar for tasks to queue
+[2024-07-09T21:32:20.543+0000] {logging_mixin.py:188} INFO - [2024-07-09T21:32:20.542+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/gcs-connector-hadoop3-latest.jar
+[2024-07-09T21:32:21.229+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/gcs-connector-hadoop3-latest.jar
+[2024-07-09T21:32:21.249+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gcs-connector-hadoop3-latest.jar took 0.723 seconds
+[2024-07-09T21:32:54.414+0000] {processor.py:161} INFO - Started process (PID=5442) to work on /opt/airflow/dags/gcs-connector-hadoop3-latest.jar
+[2024-07-09T21:32:54.416+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gcs-connector-hadoop3-latest.jar for tasks to queue
+[2024-07-09T21:32:54.418+0000] {logging_mixin.py:188} INFO - [2024-07-09T21:32:54.417+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/gcs-connector-hadoop3-latest.jar
+[2024-07-09T21:32:54.804+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/gcs-connector-hadoop3-latest.jar
+[2024-07-09T21:32:54.828+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gcs-connector-hadoop3-latest.jar took 0.426 seconds
+[2024-07-09T21:33:27.452+0000] {processor.py:161} INFO - Started process (PID=5506) to work on /opt/airflow/dags/gcs-connector-hadoop3-latest.jar
+[2024-07-09T21:33:27.455+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gcs-connector-hadoop3-latest.jar for tasks to queue
+[2024-07-09T21:33:27.457+0000] {logging_mixin.py:188} INFO - [2024-07-09T21:33:27.456+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/gcs-connector-hadoop3-latest.jar
+[2024-07-09T21:33:27.852+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/gcs-connector-hadoop3-latest.jar
+[2024-07-09T21:33:27.878+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gcs-connector-hadoop3-latest.jar took 0.438 seconds
+[2024-07-09T21:34:01.351+0000] {processor.py:161} INFO - Started process (PID=5571) to work on /opt/airflow/dags/gcs-connector-hadoop3-latest.jar
+[2024-07-09T21:34:01.354+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gcs-connector-hadoop3-latest.jar for tasks to queue
+[2024-07-09T21:34:01.356+0000] {logging_mixin.py:188} INFO - [2024-07-09T21:34:01.355+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/gcs-connector-hadoop3-latest.jar
+[2024-07-09T21:34:01.725+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/gcs-connector-hadoop3-latest.jar
+[2024-07-09T21:34:01.745+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gcs-connector-hadoop3-latest.jar took 0.406 seconds
