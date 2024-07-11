@@ -8,3 +8,61 @@ sources:
 
     tables:
     - name: cchow_table
+
+models:
+  - name: stg_cchow_table
+    description: ""
+    columns:
+      - name: load_date
+        data_type: date
+        description: ""
+
+      - name: track_date
+        data_type: date
+        description: ""
+
+      - name: geometry
+        data_type: geography
+        description: ""
+        tests:
+          - not_null:
+            severity: warn
+
+      - name: fire_link
+        data_type: string
+        description: ""
+
+      - name: versn_num
+        data_type: int64
+        description: ""
+
+      - name: fire_stat
+        data_type: string
+        description: ""
+
+      - name: fire_sz_ha
+        data_type: float64
+        description: ""
+
+      - name: fire_year
+        data_type: int64
+        description: ""
+
+      - name: feature_cd
+        data_type: string
+        description: ""
+
+      - name: fire_num
+        data_type: string
+        description: ""
+
+      - name: source
+        data_type: record
+        description: ""
+
+      - name: objectid
+        data_type: int64
+        description: ""
+        tests:
+          - unique:
+            severity: warn
