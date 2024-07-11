@@ -37,6 +37,4 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 models:
   dbt_bc_wildfires_project:
-    # Applies to all files under models/example/
-    example:
-      +materialized: table
+

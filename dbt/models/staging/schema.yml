@@ -1,0 +1,10 @@
+
+version: 2
+
+sources:
+  - name: staging
+    database: famous-muse-426921-s5
+    schema: de_zoomcamp_cchow_dataset
+
+    tables:
+    - name: cchow_table
