@@ -40,3 +40,7 @@ models:
 
 dbt-cloud:
     project-id: 70403103942862
+
+
+data_tests:
+  +store_failures: true
