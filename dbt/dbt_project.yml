@@ -38,3 +38,5 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   dbt_bc_wildfires_project:
 
+dbt-cloud:
+    project-id: 70403103942862
