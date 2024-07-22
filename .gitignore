@@ -19,4 +19,6 @@ dbt/.dbt
 airflow/.env
 
 airflow/dags/__pycache__/*
-airflow/logs/*
+
+*.log
+airflow/logs/
