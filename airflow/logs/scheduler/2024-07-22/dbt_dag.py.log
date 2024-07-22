@@ -82,3 +82,17 @@
 [2024-07-22T22:54:23.482+0000] {logging_mixin.py:188} INFO - [2024-07-22T22:54:23.481+0000] {dag.py:3096} INFO - Sync 1 DAGs
 [2024-07-22T22:54:23.500+0000] {logging_mixin.py:188} INFO - [2024-07-22T22:54:23.500+0000] {dag.py:3954} INFO - Setting next_dagrun for test_dbt_dag to None, run_after=None
 [2024-07-22T22:54:23.525+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/dbt_dag.py took 0.102 seconds
+[2024-07-22T22:54:53.760+0000] {processor.py:161} INFO - Started process (PID=12785) to work on /opt/airflow/dags/dbt_dag.py
+[2024-07-22T22:54:53.762+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/dbt_dag.py for tasks to queue
+[2024-07-22T22:54:53.764+0000] {logging_mixin.py:188} INFO - [2024-07-22T22:54:53.763+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/dbt_dag.py
+[2024-07-22T22:54:53.777+0000] {processor.py:840} INFO - DAG(s) 'test_dbt_dag' retrieved from /opt/airflow/dags/dbt_dag.py
+[2024-07-22T22:54:53.808+0000] {logging_mixin.py:188} INFO - [2024-07-22T22:54:53.808+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-07-22T22:54:53.826+0000] {logging_mixin.py:188} INFO - [2024-07-22T22:54:53.826+0000] {dag.py:3954} INFO - Setting next_dagrun for test_dbt_dag to None, run_after=None
+[2024-07-22T22:54:53.851+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/dbt_dag.py took 0.102 seconds
+[2024-07-22T22:55:24.278+0000] {processor.py:161} INFO - Started process (PID=12848) to work on /opt/airflow/dags/dbt_dag.py
+[2024-07-22T22:55:24.279+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/dbt_dag.py for tasks to queue
+[2024-07-22T22:55:24.280+0000] {logging_mixin.py:188} INFO - [2024-07-22T22:55:24.279+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/dbt_dag.py
+[2024-07-22T22:55:24.291+0000] {processor.py:840} INFO - DAG(s) 'test_dbt_dag' retrieved from /opt/airflow/dags/dbt_dag.py
+[2024-07-22T22:55:24.321+0000] {logging_mixin.py:188} INFO - [2024-07-22T22:55:24.320+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2024-07-22T22:55:24.339+0000] {logging_mixin.py:188} INFO - [2024-07-22T22:55:24.338+0000] {dag.py:3954} INFO - Setting next_dagrun for test_dbt_dag to None, run_after=None
+[2024-07-22T22:55:24.363+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/dbt_dag.py took 0.096 seconds
