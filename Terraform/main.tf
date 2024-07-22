@@ -39,6 +39,7 @@ resource "google_bigquery_dataset" "dataset-1" {
   delete_contents_on_destroy = true
 }
 
+
 # resource "google_bigquery_table" "table-1" {
 #   project = var.project_id
 #   dataset_id = var.bq_dataset_name
