@@ -10,6 +10,7 @@ sources:
     - name: wildfire_polygons_raw
     - name: recreation_lines_raw
 
+
 models:
   - name: stg_wildfire_polygons
     description: "Wildfire perimeters for the current fire season, including both active and inactive fires, supplied from various sources. The data is refreshed from operational systems every 15 min. These perimeters are rolled over to Historical Fire Polygons on April 1 of each year. Wildfire data is refreshed when practicable and individual fire update frequency will vary. The information is intended for general purposes only and should not be relied on as accurate because fires are dynamic and circumstances may change quickly."

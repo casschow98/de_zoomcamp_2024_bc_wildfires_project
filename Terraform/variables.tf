@@ -28,3 +28,12 @@ variable "bq_dataset_name" {
   default     = "de_zoomcamp_cchow_dataset"
 }
 
+# variable "bq_table_1" {
+#   description = "gcp table ID"
+#   default     = "wildfire_polygons_raw"
+# }
+
+# variable "bq_table_2" {
+#   description = "gcp table ID"
+#   default     = "recreation_lines_raw"
+# }

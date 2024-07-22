@@ -88,8 +88,11 @@ x-airflow-common:
     - ./config:/opt/airflow/config
     - ./plugins:/opt/airflow/plugins
     - /home/cassidy/.gc/my-creds.json:/.gc/my-creds.json
-    - ./data/rec_lines.zip:/opt/airflow/rec_lines.zip
-    
+    - ./data/recreation_lines.zip:/opt/airflow/recreation_lines.zip
+    - /home/cassidy/git/de_zoomcamp_2024_bc_wildfires_project/dbt:/opt/airflow/dbt
+    # - /home/cassidy/.dbt/dbt_cloud.yml:/home/airflow/.dbt/dbt_cloud.yml
+    - /home/cassidy/git/de_zoomcamp_2024_bc_wildfires_project/dbt/.dbt/profiles.yml:/home/airflow/.dbt/profiles.yml
+
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on:
     &airflow-common-depends-on
