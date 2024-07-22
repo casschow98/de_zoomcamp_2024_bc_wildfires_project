@@ -7,11 +7,12 @@ sources:
     schema: de_zoomcamp_cchow_dataset
 
     tables:
-    - name: cchow_table
+    - name: wildfire_polygons_raw
+    - name: recreation_lines_raw
 
 models:
-  - name: stg_cchow_table
-    description: ""
+  - name: stg_wildfire_polygons
+    description: "Wildfire perimeters for the current fire season, including both active and inactive fires, supplied from various sources. The data is refreshed from operational systems every 15 min. These perimeters are rolled over to Historical Fire Polygons on April 1 of each year. Wildfire data is refreshed when practicable and individual fire update frequency will vary. The information is intended for general purposes only and should not be relied on as accurate because fires are dynamic and circumstances may change quickly."
     columns:
       - name: load_date
         data_type: date
@@ -56,7 +57,7 @@ models:
         description: ""
 
       - name: source
-        data_type: record
+        data_type: string
         description: ""
 
       - name: objectid
@@ -64,3 +65,112 @@ models:
         description: ""
         data_tests:
           - unique
+
+  - name: stg_recreation_lines
+    description: "This is a spatial layer showing British Columbia Ministry of Forests Recreation Lines. These are the linear spatial representation for features such as recreation trails."
+    columns:
+      - name: geometry
+        data_type: geography
+        description: ""
+        data_tests:
+          - not_null
+
+      - name: objectid
+        data_type: int64
+        description: ""
+        data_tests:
+          - unique
+
+      - name: feat_class
+        data_type: int64
+        description: ""
+
+      - name: dist_nm
+        data_type: string
+        description: ""
+
+      - name: rec_vw_ind
+        data_type: boolean
+        description: ""
+
+      - name: proj_date
+        data_type: int64
+        description: ""
+
+      - name: dist_cd
+        data_type: string
+        description: ""
+
+      - name: rmf_skey
+        data_type: int64
+        description: ""
+
+      - name: project_nm
+        data_type: string
+        description: ""
+
+      - name: map_label
+        data_type: string
+        description: ""
+
+      - name: retire_dt
+        data_type: int64
+        description: ""
+
+      - name: feat_len
+        data_type: float64
+        description: ""
+
+      - name: feature_cd
+        data_type: string
+        description: ""
+
+      - name: project_tp
+        data_type: string
+        description: ""
+
+      - name: recdist_cd
+        data_type: string
+        description: ""
+
+      - name: site_loc
+        data_type: string
+        description: ""
+
+      - name: def_camps
+        data_type: int64
+        description: ""
+
+      - name: applctn_sd
+        data_type: string
+        description: ""
+
+      - name: life_st_cd
+        data_type: string
+        description: ""
+
+      - name: ffid
+        data_type: string
+        description: ""
+
+      - name: rec_mf_cd
+        data_type: string
+        description: ""
+
+      - name: feat_lngth
+        data_type: float64
+        description: ""
+        data_tests:
+          - not_null
+
+      - name: rec_ft_cd
+        data_type: string
+        description: ""
+
+      - name: section_id
+        data_type: string
+        description: ""
+
+      - name: file_st_cd
+        data_type: string
+        description: ""
