@@ -22,3 +22,5 @@ gcloud dataproc jobs wait 6a3eb41b-a5ab-49db-b371-04dfd2801a1f \
     --region=us-west1
 
 bq show --project_id=famous-muse-426921-s5 de_zoomcamp_cchow_dataset.cchow_table
+
+gcloud compute instances describe de-zoomcamp --format='value(serviceAccounts[].scopes[])'

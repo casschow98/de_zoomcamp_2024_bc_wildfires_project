@@ -7,7 +7,8 @@ sources:
     schema: de_zoomcamp_cchow_dataset
 
     tables:
-    - name: cchow_table
+    - name: wildfire_polygons
+    - name: recreation_lines
 
 models:
   - name: stg_cchow_table
