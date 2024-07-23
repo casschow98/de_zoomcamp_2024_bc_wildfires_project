@@ -80,16 +80,6 @@ upload_geojsonl_task_rec = PythonOperator(
     dag=dag
 )
 
-delete_contents_task_tmp = PythonOperator(
-    task_id='delete_contents_task_tmp',
-    python_callable=delete_contents,
-    op_kwargs={
-        "home_dir": home_path,
-        "name": 'tmp'
-    },
-    dag=dag
-)
-
 load_rec_bq_task = BashOperator(
     task_id='load_rec_bq_task',
     bash_command="bq load  --replace --source_format=NEWLINE_DELIMITED_JSON --clustering_fields=geometry --json_extension=GEOJSON --autodetect {{ params.dataset }}.{{ params.file_stem}}_raw gs://{{ params.bucket }}/{{ params.file_stem }}_nl.geojsonl",
@@ -101,16 +91,17 @@ load_rec_bq_task = BashOperator(
     dag=dag
 )
 
-delete_contents_task_tmp_2 = PythonOperator(
-    task_id='delete_contents_task_tmp_2',
+delete_contents_task = PythonOperator(
+    task_id='delete_contents_task',
     python_callable=delete_contents,
     op_kwargs={
         "home_dir": home_path,
-        "name": 'tmp'
+        "names": ['tmp']
     },
+    provide_context=True,
     dag=dag
 )
 
 
 # Set the dependencies between the tasks
-delete_contents_task_tmp >> upload_zip_task_rec >> convert_to_geojson_task_rec >> geojsonl_task_rec >> upload_geojsonl_task_rec >> load_rec_bq_task >> delete_contents_task_tmp_2
+upload_zip_task_rec >> convert_to_geojson_task_rec >> geojsonl_task_rec >> upload_geojsonl_task_rec >> load_rec_bq_task >> delete_contents_task

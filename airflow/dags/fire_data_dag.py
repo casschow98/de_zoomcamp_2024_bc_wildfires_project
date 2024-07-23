@@ -4,11 +4,6 @@ from airflow.operators.bash import BashOperator
 import pendulum
 import datetime
 import os
-import wget
-import zipfile
-import pyogrio
-import geopandas as gpd
-import shutil
 from functions import download_wildfire_data, upload_to_gcs, convert_to_geojson, delete_contents
 
 
@@ -93,23 +88,14 @@ upload_geojsonl_task_fire = PythonOperator(
     dag=dag
 )
 
-delete_contents_task_tmp = PythonOperator(
-    task_id='delete_contents_task_tmp',
+delete_contents_task = PythonOperator(
+    task_id='delete_contents_task',
     python_callable=delete_contents,
     op_kwargs={
         "home_dir": home_path,
-        "name": 'tmp'
+        "names": ['tmp',f"{fire_poly_file}.zip"]
     },
-    dag=dag
-)
-
-delete_contents_task_zip = PythonOperator(
-    task_id='delete_contents_task_zip',
-    python_callable=delete_contents,
-    op_kwargs={
-        "home_dir": home_path,
-        "name": f"{fire_poly_file}.zip"
-    },
+    provide_context=True,
     dag=dag
 )
 
@@ -124,25 +110,8 @@ load_fire_bq_task = BashOperator(
     dag=dag
 )
 
-delete_contents_task_tmp_2 = PythonOperator(
-    task_id='delete_contents_task_tmp_2',
-    python_callable=delete_contents,
-    op_kwargs={
-        "home_dir": home_path,
-        "name": 'tmp'
-    },
-    dag=dag
-)
 
-delete_contents_task_zip_2 = PythonOperator(
-    task_id='delete_contents_task_zip_2',
-    python_callable=delete_contents,
-    op_kwargs={
-        "home_dir": home_path,
-        "name": f"{fire_poly_file}.zip"
-    },
-    dag=dag
-)
+
 
 # Set the dependencies between the tasks
-delete_contents_task_zip >> delete_contents_task_tmp >> download_task_fire >> upload_zip_task_fire >> convert_to_geojson_task_fire >> geojsonl_task_fire >> upload_geojsonl_task_fire >> load_fire_bq_task >> delete_contents_task_tmp_2 >> delete_contents_task_zip_2
+download_task_fire >> upload_zip_task_fire >> convert_to_geojson_task_fire >> geojsonl_task_fire >> upload_geojsonl_task_fire >> load_fire_bq_task >> delete_contents_task

@@ -17,7 +17,6 @@ limited as (
         dist_nm,
         rec_vw_ind,
         proj_date,
-        dist_cd,
         rmf_skey,
         project_nm,
         map_label,

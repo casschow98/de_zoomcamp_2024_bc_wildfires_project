@@ -70,13 +70,16 @@ def convert_to_geojson(home_dir, file_name):
 
 
 # Function to delete files or directories
-def delete_contents(home_dir, *name):
+def delete_contents(home_dir, names, **kwargs):
     
-    path = os.path.join(home_dir,name)
-    for n in name:
-        if os.path.isfile(path):
-            os.remove(path)
-            print(f"Successfully removed file {path}!")
-        elif os.path.isdir(path):
-            shutil.rmtree(path)
-            print(f"Successfully removed directory and contents of {path}!")
+    try:
+        for name in names:
+            path = os.path.join(home_dir,name)
+            if os.path.isfile(path):
+                os.remove(path)
+                print(f"Successfully removed file {path}!")
+            elif os.path.isdir(path):
+                shutil.rmtree(path)
+                print(f"Successfully removed directory and contents of {path}!")
+    except Exception as e:
+            print(f"Error removing {path}: {e}")
