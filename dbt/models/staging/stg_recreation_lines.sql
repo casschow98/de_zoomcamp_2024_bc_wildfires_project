@@ -1,42 +1,29 @@
 {{ config(materialized='view',cluster_by=['geometry']) }}
 
-with 
+WITH 
 
-source as (
+source AS (
 
-    select * from {{ source('staging', 'recreation_lines_raw') }}
+    SELECT * FROM {{ source('staging', 'recreation_lines_raw') }}
 
 ),
 
-limited as (
+transformed AS (
 
-    select
-        geometry,
-        objectid,
-        feat_class,
-        dist_nm,
-        rec_vw_ind,
-        proj_date,
-        rmf_skey,
-        project_nm,
-        map_label,
-        retire_dt,
-        feat_len,
-        feature_cd,
-        project_tp,
-        recdist_cd,
-        site_loc,
-        def_camps,
-        applctn_sd,
-        life_st_cd,
-        ffid,
-        rec_mf_cd,
-        feat_lngth,
-        rec_ft_cd,
-        section_id,
-        file_st_cd,        
-
-    from source
+    SELECT
+        CAST(geometry AS GEOGRAPHY) AS geometry,
+        CAST(objectid AS INT64) AS Object_ID,
+        DATE(TIMESTAMP(PARSE_TIMESTAMP('%Y%m%d', CAST(proj_date AS STRING)))) AS Project_date,
+        CAST(rmf_skey AS INT64) AS Feature_code,
+        INITCAP(CAST(project_nm AS STRING)) AS Project_name,
+        DATE(TIMESTAMP(PARSE_TIMESTAMP('%Y%m%d%H%M%S', CAST(retire_dt AS STRING)))) AS Retire_date ,
+        CAST(feat_len AS FLOAT64) AS Feature_length_m,
+        INITCAP(CAST(site_loc AS STRING)) AS Site_location,
+        CAST(def_camps AS INT64) AS Campsites,
+        CAST(life_st_cd AS STRING) AS Trail_status,
+        CAST(ffid AS STRING) AS Forest_file_ID,
+        CAST(section_id AS STRING) AS Section_ID
+    FROM source
 )
 
-select * from limited
+SELECT * FROM transformed

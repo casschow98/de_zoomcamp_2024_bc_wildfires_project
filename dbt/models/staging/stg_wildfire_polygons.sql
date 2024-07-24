@@ -1,31 +1,28 @@
 {{ config(materialized='view',cluster_by=['geometry']) }}
 
 
-with 
+WITH 
 
-source as (
+source AS (
 
-    select * from {{ source('staging', 'wildfire_polygons_raw') }}
+    SELECT * from {{ source('staging', 'wildfire_polygons_raw') }}
 
 ),
 
-limited as (
+transformed AS (
 
-    select
-        load_date,
-        track_date,
-        geometry,
-        fire_link,
-        versn_num,
-        fire_stat,
-        fire_sz_ha,
-        fire_year,
-        feature_cd,
-        fire_num,
-        objectid
+    SELECT
+        DATE(DATETIME(TIMESTAMP(track_date),'America/Los_Angeles')) AS Track_date,
+        CAST(geometry AS GEOGRAPHY) AS geometry,
+        CAST(fire_link AS STRING) AS Fire_url,
+        INITCAP(CAST(fire_stat AS STRING)) AS Fire_status,
+        CAST(fire_sz_ha AS FLOAT64) AS Fire_size_Ha,
+        CAST(feature_cd AS STRING) AS Feature_code,
+        CAST(fire_num AS STRING) AS Fire_number,
+        CAST(objectid AS INT64) AS Object_ID
 
-    from source
+    FROM source
 
 )
 
-select * from limited
+SELECT * FROM transformed
