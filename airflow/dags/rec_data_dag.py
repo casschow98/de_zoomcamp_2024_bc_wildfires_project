@@ -32,7 +32,7 @@ dag = DAG(
     'rec_data_dag',
     default_args=default_args,
     description='Uploading recreation data to Google Cloud Storage and BigQuery',
-    schedule='@once',
+    schedule='@daily',
     catchup=False
 )
 

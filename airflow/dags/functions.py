@@ -3,7 +3,6 @@ from airflow.exceptions import AirflowException
 from google.cloud import storage
 import wget
 import zipfile
-import pyogrio
 import geopandas as gpd
 import shutil
 
