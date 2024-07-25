@@ -20,7 +20,7 @@ transformed AS (
         CAST(feat_len AS FLOAT64) AS Feature_length_m,
         INITCAP(CAST(site_loc AS STRING)) AS Site_location,
         CAST(def_camps AS INT64) AS Campsites,
-        CAST(life_st_cd AS STRING) AS Trail_status,
+        INITCAP(CAST(life_st_cd AS STRING)) AS Trail_status,
         CAST(ffid AS STRING) AS Forest_file_ID,
         CAST(section_id AS STRING) AS Section_ID
     FROM source

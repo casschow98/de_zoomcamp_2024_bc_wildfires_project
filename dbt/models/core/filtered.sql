@@ -23,4 +23,4 @@ FROM
 JOIN
     {{ ref("stg_wildfire_polygons") }} as f
 ON
-    ST_DWITHIN(r.geometry,f.geometry,2000)
+    ST_DWITHIN(r.geometry,f.geometry,30000)
