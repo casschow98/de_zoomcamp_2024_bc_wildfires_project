@@ -24,3 +24,5 @@ airflow/.env
 *.log
 airflow/logs/
 
+notes.txt
+
