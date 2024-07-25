@@ -42,5 +42,5 @@ dbt_task = BashOperator(
 )
 
 
-
+# Dependencies between tasks
 wait_for_fire_data >> dbt_task
