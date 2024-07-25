@@ -23,7 +23,7 @@ transformed AS (
             CONCAT('FFID: ',CAST(ffid AS STRING))
         ) AS Project_name,
         DATE(TIMESTAMP(PARSE_TIMESTAMP('%Y%m%d%H%M%S', CAST(retire_dt AS STRING)))) AS Retire_date,
-        CAST(feat_len AS FLOAT64) AS Feature_length_m,
+        ROUND(CAST(feat_len AS FLOAT64),1) AS Feature_length_m,
         INITCAP(CAST(site_loc AS STRING)) AS Site_location,
         CAST(def_camps AS INT64) AS Campsites,
         INITCAP(CAST(life_st_cd AS STRING)) AS Trail_status,
