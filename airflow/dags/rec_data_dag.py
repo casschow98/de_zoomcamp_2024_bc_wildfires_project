@@ -6,7 +6,7 @@ import datetime
 import os
 from functions import upload_to_gcs, convert_to_geojson, delete_contents
 
-# Define your bucket and home path environment variables
+# Define bucket and home path environment variables
 home_path = os.environ.get("AIRFLOW_HOME","/opt/airflow/")
 BUCKET = os.environ.get("GCP_STORAGE_BUCKET")
 DATASET = "de_zoomcamp_cchow_dataset"
@@ -38,6 +38,7 @@ dag = DAG(
 
 # Define the tasks
 
+# Task to upload the shapefile .zip of recreation lines to Google Cloud Storage
 upload_zip_task_rec = PythonOperator(
     task_id='upload_zip_task_rec',
     python_callable=upload_to_gcs,
@@ -49,6 +50,7 @@ upload_zip_task_rec = PythonOperator(
     dag=dag
 )
 
+# Task to extract the zipfile and convert shapefile to geojson format
 convert_to_geojson_task_rec = PythonOperator(
     task_id='convert_to_geojson_task_rec',
     python_callable=convert_to_geojson,
@@ -59,6 +61,7 @@ convert_to_geojson_task_rec = PythonOperator(
     dag=dag
 )
 
+# Task to convert the geojson to a newline-delimited geojson format
 geojsonl_task_rec = BashOperator(
     task_id='geojsonl_task_rec',
     bash_command="geojson2ndjson {{ params.in_geojson }} > {{ params.out_geojsonl }}",
@@ -69,6 +72,7 @@ geojsonl_task_rec = BashOperator(
     dag=dag
 )
 
+# Task to upload the newline-delimited geojson to Google Cloud Storage
 upload_geojsonl_task_rec = PythonOperator(
     task_id='upload_geojsonl_task_rec',
     python_callable=upload_to_gcs,
@@ -80,6 +84,7 @@ upload_geojsonl_task_rec = PythonOperator(
     dag=dag
 )
 
+# Task to load the .geojsonl in the GCS bucket to a table in the BigQuery dataset
 load_rec_bq_task = BashOperator(
     task_id='load_rec_bq_task',
     bash_command="bq load  --replace --source_format=NEWLINE_DELIMITED_JSON --clustering_fields=geometry --json_extension=GEOJSON --autodetect {{ params.dataset }}.{{ params.file_stem}}_raw gs://{{ params.bucket }}/{{ params.file_stem }}_nl.geojsonl",
@@ -91,6 +96,7 @@ load_rec_bq_task = BashOperator(
     dag=dag
 )
 
+# Task to delete tmp directory and contents
 delete_contents_task = PythonOperator(
     task_id='delete_contents_task',
     python_callable=delete_contents,
@@ -103,5 +109,5 @@ delete_contents_task = PythonOperator(
 )
 
 
-# Set the dependencies between the tasks
+# Dependencies between the tasks
 upload_zip_task_rec >> convert_to_geojson_task_rec >> geojsonl_task_rec >> upload_geojsonl_task_rec >> load_rec_bq_task >> delete_contents_task

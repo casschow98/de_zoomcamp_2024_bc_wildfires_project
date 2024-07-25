@@ -8,7 +8,7 @@ import os
 from functions import download_wildfire_data, upload_to_gcs, convert_to_geojson, delete_contents
 
 
-# Define your bucket and home path environment variables
+# Define bucket and home path environment variables
 home_path = os.environ.get("AIRFLOW_HOME","/opt/airflow/")
 BUCKET = os.environ.get("GCP_STORAGE_BUCKET")
 DATASET = "de_zoomcamp_cchow_dataset"
@@ -37,6 +37,8 @@ dag = DAG(
 )
 
 # Define the tasks
+
+# Task to download wildfire data from BC Data Catalogue
 download_task_fire = PythonOperator(
     task_id='download_task_fire',
     python_callable=download_wildfire_data,
@@ -47,6 +49,7 @@ download_task_fire = PythonOperator(
     dag=dag
 )
 
+# Task to upload the shapefile .zip of wildfire polygons to Google Cloud Storage
 upload_zip_task_fire = PythonOperator(
     task_id='upload_zip_task_fire',
     python_callable=upload_to_gcs,
@@ -58,6 +61,7 @@ upload_zip_task_fire = PythonOperator(
     dag=dag
 )
 
+# Task to extract the zipfile and convert shapefile to geojson format
 convert_to_geojson_task_fire = PythonOperator(
     task_id='convert_to_geojson_task_fire',
     python_callable=convert_to_geojson,
@@ -68,6 +72,7 @@ convert_to_geojson_task_fire = PythonOperator(
     dag=dag
 )
 
+# Task to convert the geojson to a newline-delimited geojson format
 geojsonl_task_fire = BashOperator(
     task_id='geojsonl_task_fire',
     bash_command="geojson2ndjson {{ params.in_geojson }} > {{ params.out_geojsonl }}",
@@ -78,6 +83,7 @@ geojsonl_task_fire = BashOperator(
     dag=dag
 )
 
+# Task to upload the newline-delimited geojson to Google Cloud Storage
 upload_geojsonl_task_fire = PythonOperator(
     task_id='upload_geojsonl_task_fire',
     python_callable=upload_to_gcs,
@@ -89,17 +95,7 @@ upload_geojsonl_task_fire = PythonOperator(
     dag=dag
 )
 
-delete_contents_task = PythonOperator(
-    task_id='delete_contents_task',
-    python_callable=delete_contents,
-    op_kwargs={
-        "home_dir": home_path,
-        "names": ['tmp',f"{fire_poly_file}.zip"]
-    },
-    provide_context=True,
-    dag=dag
-)
-
+# Task to load the .geojsonl in the GCS bucket to a table in the BigQuery dataset
 load_fire_bq_task = BashOperator(
     task_id='load_fire_bq_task',
     bash_command="bq load  --replace --source_format=NEWLINE_DELIMITED_JSON --clustering_fields=geometry --json_extension=GEOJSON --autodetect {{ params.dataset }}.{{ params.file_stem}}_raw gs://{{ params.bucket }}/{{ params.file_stem }}_nl.geojsonl",
@@ -111,6 +107,19 @@ load_fire_bq_task = BashOperator(
     dag=dag
 )
 
+# Task to delete tmp directory and contents and the compressed shapefile
+delete_contents_task = PythonOperator(
+    task_id='delete_contents_task',
+    python_callable=delete_contents,
+    op_kwargs={
+        "home_dir": home_path,
+        "names": ['tmp',f"{fire_poly_file}.zip"]
+    },
+    provide_context=True,
+    dag=dag
+)
+
+# Task to trigger the start of this dag once the rec_data_dag successfully finishes its final task
 wait_for_rec_data = ExternalTaskSensor(
     task_id='wait_for_rec_data',
     external_dag_id='rec_data_dag',
@@ -123,5 +132,5 @@ wait_for_rec_data = ExternalTaskSensor(
 )
 
 
-# Set the dependencies between the tasks
+# Dependencies between the tasks
 wait_for_rec_data >> download_task_fire >> upload_zip_task_fire >> convert_to_geojson_task_fire >> geojsonl_task_fire >> upload_geojsonl_task_fire >> load_fire_bq_task >> delete_contents_task

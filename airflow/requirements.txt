@@ -4,6 +4,5 @@ google-cloud-storage
 google-cloud-bigquery
 apache-airflow[google]
 wget
-# apache-airflow-providers-dbt-cloud==2.2.0
 dbt-core
 dbt-bigquery
