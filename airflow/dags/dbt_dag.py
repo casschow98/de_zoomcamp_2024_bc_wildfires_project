@@ -22,28 +22,19 @@ dag=DAG(
     catchup=False,
 )
 
-# wait_for_rec_data = ExternalTaskSensor(
-#     task_id='wait_for_rec_data',
-#     external_dag_id='rec_data_dag',
-#     external_task_id='delete_contents_task',  # Task ID to check in the parent DAG
-#     mode='poke',
-#     timeout=600,
-#     poke_interval=30,
-#     allowed_states=['success'],
-#     dag=dag,
-# )
+# Task to trigger the start of this dag once the fire_data_dag successfully finishes its final task
+wait_for_fire_data = ExternalTaskSensor(
+    task_id='wait_for_fire_data',
+    external_dag_id='fire_data_dag',
+    external_task_id='load_fire_bq_task',  # Task ID to check in the parent DAG
+    mode='poke',
+    timeout=600,
+    poke_interval=30,
+    allowed_states=['success'],
+    dag=dag,
+)
 
-# wait_for_fire_data = ExternalTaskSensor(
-#     task_id='wait_for_fire_data',
-#     external_dag_id='fire_data_dag',
-#     external_task_id='load_fire_bq_task',  # Task ID to check in the parent DAG
-#     mode='poke',
-#     timeout=600,
-#     poke_interval=30,
-#     allowed_states=['success'],
-#     dag=dag,
-# )
-
+# Task to install dbt packages and run the dbt models (staging and core)
 dbt_task = BashOperator(
     task_id="dbt_task",
     bash_command=f"cd /opt/airflow/dbt/ && dbt deps && dbt debug --config-dir && dbt run",
@@ -52,5 +43,4 @@ dbt_task = BashOperator(
 
 
 
-# wait_for_fire_data >>
-dbt_task
+wait_for_fire_data >> dbt_task
