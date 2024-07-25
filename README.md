@@ -1,5 +1,5 @@
 # Wildfires & Recreational Trails Data Engineering Project
-As part of the [Data Engineering Zoomcamp](https://github.com/DataTalksClub/data-engineering-zoomcamp) by [DataTalks.Club](https://datatalks.club), this project marks the final component of the course. Sending my thanks to the instructors that contributed to building this educational resource.
+As part of the [Data Engineering Zoomcamp](https://github.com/DataTalksClub/data-engineering-zoomcamp) by [DataTalks.Club](https://datatalks.club), this project marks the final component of the course. Many thanks to the instructors that contributed to building this educational resource.
 
 ## Purpose
 The purpose of this project is to design a prototype of a data pipeline based on wildfire activity and recreational trails in British Columbia (BC), Canada.
@@ -29,13 +29,21 @@ This project produces a web map application displaying wildfire perimeters and r
 
 ## Data Sources and Limitations
 - **BC Wildfire Fire Perimeters - Current**:
-  - This is a spatial layer of polygons showing both active and inactive fires for the current fire season. The data is refreshed from operational systems every 15 min. These perimeters are rolled over to Historical Fire Polygons on April 1 of each year.
+  - This is a spatial layer (shapefile) of polygons showing both active and inactive fires for the current fire season. The data is refreshed from operational systems every 15 min. These perimeters are rolled over to Historical Fire Polygons on April 1 of each year.
   - Limitations:
     - *Wildfire data may not reflect the most current fire situation as fires are dynamic and circumstances may change quickly. Wildfire data is refreshed when practicable and individual fire update frequency will vary.*
 - **Recreation Line**:
-  - This is a spatial layer of polylines shows features such as recreation trails.
+  - This is a spatial layer (shapefile) of polylines shows features such as recreation trails.
   - Limitations:
-    - *These polylines represent recreational trails and may not include recreational projects where polygon features would be more appropriate. Trails that are not registered within the BC Minstry of Forests are not included. Data is not updated on a regular schedule.*
+    - *These polylines represent recreational trails and may not include recreational projects where polygon features would be more appropriate. Trails that are not registered within the BC Minstry of Forests are not included. Data is not updated on a regular schedule and the decisions was made to keep this data static for the purposes of this project.*
  
 - All data was obtained through the BC Data Catalogue.
  (Attribution: Contains information licensed under the [Open Government Licence – British Columbia](https://www2.gov.bc.ca/gov/content/data/policy-standards/open-data/open-government-licence-bc))
+
+## Setup
+
+## Workflow Orchestration
+
+## Data Warehouse Transformations
+
+## Future Improvements
