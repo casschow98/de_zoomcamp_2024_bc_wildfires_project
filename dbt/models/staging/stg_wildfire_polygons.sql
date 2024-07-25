@@ -1,4 +1,7 @@
-{{ config(materialized='incremental',cluster_by=['geometry']) }}
+{{ config(
+    materialized='table',
+    cluster_by=['geometry']
+) }}
 
 
 WITH 

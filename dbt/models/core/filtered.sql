@@ -1,7 +1,7 @@
 {{ config(
     materialized='table',
     cluster_by=['geometry']
-)}}
+) }}
 
 SELECT
     r.geometry,
@@ -23,4 +23,4 @@ FROM
 JOIN
     {{ ref("stg_wildfire_polygons") }} as f
 ON
-    ST_DWITHIN(r.geometry,f.geometry,30000)
+    ST_DWITHIN(r.geometry,f.geometry,20000)
