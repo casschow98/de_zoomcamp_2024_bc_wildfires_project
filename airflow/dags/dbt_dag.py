@@ -1,7 +1,7 @@
 import os
 from airflow.models import DAG
 from airflow.operators.bash import BashOperator
-# from airflow.sensors.external_task import ExternalTaskSensor
+from airflow.sensors.external_task import ExternalTaskSensor
 import pendulum
 import datetime
 
@@ -52,4 +52,5 @@ dbt_task = BashOperator(
 
 
 
+# wait_for_fire_data >>
 dbt_task

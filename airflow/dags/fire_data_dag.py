@@ -1,6 +1,7 @@
 from airflow.models import DAG
 from airflow.operators.python import PythonOperator
 from airflow.operators.bash import BashOperator
+from airflow.sensors.external_task import ExternalTaskSensor
 import pendulum
 import datetime
 import os
@@ -110,8 +111,17 @@ load_fire_bq_task = BashOperator(
     dag=dag
 )
 
-
+wait_for_rec_data = ExternalTaskSensor(
+    task_id='wait_for_rec_data',
+    external_dag_id='rec_data_dag',
+    external_task_id='delete_contents_task',  # Task ID to check in the parent DAG
+    mode='poke',
+    timeout=600,
+    poke_interval=30,
+    allowed_states=['success'],
+    dag=dag,
+)
 
 
 # Set the dependencies between the tasks
-download_task_fire >> upload_zip_task_fire >> convert_to_geojson_task_fire >> geojsonl_task_fire >> upload_geojsonl_task_fire >> load_fire_bq_task >> delete_contents_task
+wait_for_rec_data >> download_task_fire >> upload_zip_task_fire >> convert_to_geojson_task_fire >> geojsonl_task_fire >> upload_geojsonl_task_fire >> load_fire_bq_task >> delete_contents_task
