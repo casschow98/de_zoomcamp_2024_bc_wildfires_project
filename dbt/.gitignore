@@ -7,4 +7,3 @@ snapshots/
 tests/
 target/
 logs/
-.dbt/
