@@ -9,3 +9,4 @@ my-bigquery-db:
       dataset: dbt_cchow
       threads: 4
       keyfile: {{ env_var('GOOGLE_APPLICATION_CREDENTIALS') }}
+      location: 'us-west1'
