@@ -118,7 +118,6 @@ Figure 5. Example of visualization of recreation trails data in the final report
   - Credentials keyfile and ssh client
   - VM instance
 - **VM Instance**
-  - IDE (Visual Studio Code) connection
   - Anaconda, Docker, Terraform installation
   - GCP credentials retrieval
 - **Docker**
