@@ -43,7 +43,7 @@ As part of the [Data Engineering Zoomcamp](https://github.com/DataTalksClub/data
 [Future Opportunities](#future-opportunities)
 
 ## Purpose
-The purpose of this project is to design a prototype of a modern data pipeline focused on wildfire activity and recreational trails in British Columbia (BC), Canada.
+The purpose of this project was to design and develop a prototype of a modern data pipeline focused on wildfire activity and recreational trails in British Columbia (BC), Canada.
 
 ### Background
 [Statistics](https://www2.gov.bc.ca/gov/content/safety/wildfire-status/about-bcws/wildfire-history) from the 2023 wildfire season:
