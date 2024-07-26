@@ -1,0 +1,8 @@
+pandas
+geopandas
+google-cloud-storage
+google-cloud-bigquery
+apache-airflow[google]
+wget
+dbt-core
+dbt-bigquery
