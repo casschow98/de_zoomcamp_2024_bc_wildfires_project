@@ -1,6 +1,7 @@
 <a name="top"></a> <!-- Custom anchor -->
 # BC Wildfires & Recreational Trails Data Engineering Project
 As part of the [Data Engineering Zoomcamp](https://github.com/DataTalksClub/data-engineering-zoomcamp) by [DataTalks.Club](https://datatalks.club), this project marks the final component of the course. Many thanks to the instructors that contributed to building this educational resource.
+* This project no longer will be maintained as it used a temporary free trial account on Google Cloud Platform.
 
 ## Table of Contents
 [Purpose](#purpose)
@@ -43,7 +44,7 @@ As part of the [Data Engineering Zoomcamp](https://github.com/DataTalksClub/data
 [Future Opportunities](#future-opportunities)
 
 ## Purpose
-The purpose of this project is to design a prototype of a modern data pipeline focused on wildfire activity and recreational trails in British Columbia (BC), Canada.
+The purpose of this project was to design and develop a prototype of a modern data pipeline focused on wildfire activity and recreational trails in British Columbia (BC), Canada.
 
 ### Background
 [Statistics](https://www2.gov.bc.ca/gov/content/safety/wildfire-status/about-bcws/wildfire-history) from the 2023 wildfire season:
@@ -118,7 +119,6 @@ Figure 5. Example of visualization of recreation trails data in the final report
   - Credentials keyfile and ssh client
   - VM instance
 - **VM Instance**
-  - IDE (Visual Studio Code) connection
   - Anaconda, Docker, Terraform installation
   - GCP credentials retrieval
 - **Docker**
