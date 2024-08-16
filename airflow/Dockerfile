@@ -9,7 +9,7 @@ RUN apt-get update -qq && apt-get install vim -qqq && apt-get install tree
 
 COPY requirements.txt .
 USER airflow
-RUN pip install --no-cache-dir "apache-airflow==2.9.2" -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 USER root
 ENV PATH=$PATH:/root/.local/bin
 
