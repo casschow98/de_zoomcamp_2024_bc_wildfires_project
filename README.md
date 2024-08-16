@@ -1,6 +1,7 @@
 <a name="top"></a> <!-- Custom anchor -->
 # BC Wildfires & Recreational Trails Data Engineering Project
 As part of the [Data Engineering Zoomcamp](https://github.com/DataTalksClub/data-engineering-zoomcamp) by [DataTalks.Club](https://datatalks.club), this project marks the final component of the course. Many thanks to the instructors that contributed to building this educational resource.
+* This project no longer will be maintained as it used a temporary free trial account on Google Cloud Platform.
 
 ## Table of Contents
 [Purpose](#purpose)
